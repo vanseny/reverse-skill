@@ -526,6 +526,17 @@
           "note": "ESP/overlay 仅在游戏语境归 R43"
         }
       ]
+    },
+    "R47": {
+      "label": "JS signature restoration / Camoufox anti-detect / env-clone",
+      "skill": "js-reverse-hello/SKILL.md",
+      "keywords": [
+        {
+          "must": "camoufox|jsdom|补环境|环境伪装|签名还原|算法还原|接口自动化|api.?automation|ast.?插桩|源码.?插桩|源码.?改写",
+          "exclude": "apk|smali|jadx|android|ios|macho|firmware|小程序|wmpf",
+          "note": "Node/Python 签名还原 + Camoufox 反检测 + JSVMP 双路径；仅前端 JS 语境，jsvmp 纯词仍归 R43"
+        }
+      ]
     }
   },
   "priority": [
@@ -533,6 +544,7 @@
     "R1",
     "R2",
     "R42",
+    "R47",
     "R3",
     "R30",
     "R31",

@@ -82,6 +82,7 @@ python3 skills/case-review/scripts/review_case.py work/<case> --verify-hashes --
 | **R1** | APK / smali / jadx / apktool | `apk-reverse/` |
 | **R2** | IPA / iOS / Objection / MobSF / mobile | `mobile-reverse/` |
 | **R42** | 微信小程序 / WMPF / WeChatAppEx / AppService / 62000 | `wechat-miniapp-reverse/` |
+| **R47** | JS 签名还原 / Camoufox 反检测 / 补环境仿真 | `js-reverse-hello/` |
 | **R3** | JS 签名 / 前端加密 / jshook / CDP | `js-reverse/` |
 | **R30** | 浏览器扩展逆向 | `browser-extension-reverse/` |
 | **R31** | macOS / Mach-O | `macos-reverse/` |

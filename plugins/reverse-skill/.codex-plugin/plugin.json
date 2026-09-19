@@ -1,13 +1,13 @@
 {
   "name": "reverse-skill",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Codex adapter for the client-neutral reverse-skill security router.",
   "author": {
-    "name": "ZhaoXu",
-    "url": "https://github.com/zhaoxuya520"
+    "name": "vanseny",
+    "url": "https://github.com/vanseny"
   },
   "homepage": "https://reverse.apivix.com/",
-  "repository": "https://github.com/zhaoxuya520/reverse-skill",
+  "repository": "https://github.com/vanseny/reverse-skill",
   "license": "MIT",
   "keywords": [
     "cybersecurity",
@@ -20,7 +20,7 @@
     "displayName": "Reverse Skill",
     "shortDescription": "Route authorized security and reverse-engineering work",
     "longDescription": "Adds a Codex-facing entry point for the client-neutral reverse-skill repository while preserving its scope, routing, and toolchain gates.",
-    "developerName": "ZhaoXu",
+    "developerName": "vanseny",
     "category": "Developer Tools",
     "capabilities": [
       "Interactive",

@@ -13,12 +13,12 @@ name: reverse-skill-market
 
 services:
   reverse-skill-market:
-    image: reverse-skill-market:1.0.1
+    image: reverse-skill-market:1.0.2
     build:
       context: ..
       dockerfile: docker/Dockerfile
       args:
-        SKILL_VERSION: "1.0.1"
+        SKILL_VERSION: "1.0.2"
     container_name: reverse-skill-market
     ports:
       - "8899:80"

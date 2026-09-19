@@ -1,13 +1,13 @@
 {
     "name":  "reverse-skill",
-    "version":  "1.0.1",
-    "description":  "Client-neutral security and reverse-engineering skill router. 48 specialist skills covering APK/mobile, binary (IDA/Ghidra/Binary Ninja/radare2), JS/frontend, protocol recovery, malware, pentest, cloud/K8s, forensics, game security, WeChat mini-program reverse, and more. Scope-gated: authorization must be granted before any target action.",
+    "version":  "1.0.2",
+    "description":  "Client-neutral security and reverse-engineering skill router. 50 specialist skills covering APK/mobile, binary (IDA/Ghidra/Binary Ninja/radare2), JS/frontend, protocol recovery, malware, pentest, cloud/K8s, forensics, game security, WeChat mini-program reverse, and more. Scope-gated: authorization must be granted before any target action.",
     "author":  {
-                   "name":  "ZhaoXu",
-                   "url":  "https://github.com/zhaoxuya520"
+                   "name":  "vanseny",
+                   "url":  "https://github.com/vanseny"
                },
     "homepage":  "https://reverse.apivix.com/",
-    "repository":  "https://github.com/zhaoxuya520/reverse-skill",
+    "repository":  "https://github.com/vanseny/reverse-skill",
     "license":  "MIT",
     "keywords":  [
                      "cybersecurity",

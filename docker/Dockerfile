@@ -14,7 +14,7 @@
 # "dumb http transport does not support shallow capabilities"，必须走 smart HTTP。
 FROM debian:stable-slim
 
-ARG SKILL_VERSION=1.0.1
+ARG SKILL_VERSION=1.0.2
 LABEL org.opencontainers.image.title="reverse-skill-market" \
       org.opencontainers.image.version="${SKILL_VERSION}" \
       org.opencontainers.image.description="Self-hosted Claude Code plugin marketplace for the reverse-skill catalog" \

@@ -75,3 +75,6 @@ master-route-*/
 mcps/
 # local experiment dirs (never ship)
 *-scope-*/
+
+# 编辑器备份文件
+*.backup

@@ -81,6 +81,7 @@ python3 skills/case-review/scripts/review_case.py work/<case> --verify-hashes --
 | **R4** | DSL VM / fireye / 自定义 opcode VM | `reverse-engineering/dsl-vm-reverse/` |
 | **R1** | APK / smali / jadx / apktool | `apk-reverse/` |
 | **R2** | IPA / iOS / Objection / MobSF / mobile | `mobile-reverse/` |
+| **R42** | 微信小程序 / WMPF / WeChatAppEx / AppService / 62000 | `wechat-miniapp-reverse/` |
 | **R3** | JS 签名 / 前端加密 / jshook / CDP | `js-reverse/` |
 | **R30** | 浏览器扩展逆向 | `browser-extension-reverse/` |
 | **R31** | macOS / Mach-O | `macos-reverse/` |
@@ -121,6 +122,8 @@ python3 skills/case-review/scripts/review_case.py work/<case> --verify-hashes --
 | **R20** | 报告 / writeup | `docs-generator/` |
 | **R39** | 图表 / Mermaid / Graphviz / PlantUML / 架构图 | `diagram-generator/` |
 | **R41** | CTF / AWD / 靶场（单入口，不展开 40 个子技能） | `ctf-sandbox/` |
+| **R43** | 纯 Web 协议恢复 / browser-free collector / spider-king | `trace/` |
+| **R46** | 游戏安全 / 引擎逆向 / anti-cheat / AGS 目录 | `game-security/` |
 | **R0** | 通用逆向 / 反调试 / OLLVM / 未知二进制 | `reverse-engineering/` |
 
 未命中强关键词 → PRIMARY=`R0`，并提示打开 `routing.md`（歧义附录，不是第二套路由器）。

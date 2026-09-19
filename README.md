@@ -247,12 +247,39 @@ The routing core, regression suite, manifests, and case workflow do not depend o
 
 For Codex, the repository also exposes an optional adapter plugin at [`plugins/reverse-skill/`](plugins/reverse-skill/). It delegates to the repository's existing routing core and does not register external MCP servers automatically.
 
+### Optional Claude Code plugin
+
+The repository is also a Claude Code [plugin marketplace](https://docs.claude.com/en/docs/claude-code/plugins) via [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json). Installing it mounts the full specialist skill catalog so Claude Code activates the right skill from task context:
+
+```bash
+# Install straight from GitHub (no manual clone)
+claude plugin marketplace add zhaoxuya520/reverse-skill
+claude plugin install reverse-skill@reverse-skill
+
+# Or from an existing local clone
+claude plugin marketplace add /path/to/reverse-skill
+claude plugin install reverse-skill@reverse-skill
+```
+
+Inspect what got mounted:
+
+```bash
+claude plugin details reverse-skill@reverse-skill
+claude plugin list --available --json
+```
+
+This is optional and additive. The repository stays client-neutral: the plugin manifest only enumerates existing skills, registers no MCP servers, and does not change the routing core or the authorization gate. Authorization still comes from the scope contract (`case-init`), never from the presence of the plugin.
+
+> **Maintenance:** the manifest lists each skill path explicitly because a root-level `skills/SKILL.md` makes Claude Code treat `skills/` as a single skill and skip the nested ones. After adding or renaming a skill, run `powershell -File skills/scripts/sync-claude-plugin-manifest.ps1` (CI gates this with `-Check`).
+
 ### Repository layout
 
 ```
 .
 ├── README.md / README_zh.md / README_AI.md
 ├── RULES.md / RULES_zh.md
+├── .claude-plugin/            # Claude Code plugin marketplace + manifest
+├── plugins/reverse-skill/     # optional Codex adapter plugin
 ├── skills/
 │   ├── MASTER-ROUTING.md / SKILL.md / routing.md
 │   ├── ops/                   # ops contracts

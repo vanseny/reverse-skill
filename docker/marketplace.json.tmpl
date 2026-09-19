@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "reverse-skill",
+  "owner": {
+    "name": "ZhaoXu",
+    "url": "https://github.com/zhaoxuya520"
+  },
+  "metadata": {
+    "description": "Self-hosted local marketplace for the reverse-skill security router. Served from a container; the plugin payload is fetched from the bundled bare git repository over smart HTTP.",
+    "version": "1.0.1"
+  },
+  "plugins": [
+    {
+      "name": "reverse-skill",
+      "source": {
+        "source": "url",
+        "url": "__BASE_URL__/reverse-skill.git"
+      },
+      "description": "Full reverse-skill router with the complete specialist skill catalog. Scope-gated: authorization comes from the case scope contract, never from the plugin.",
+      "version": "1.0.1",
+      "homepage": "https://github.com/zhaoxuya520/reverse-skill",
+      "repository": "https://github.com/zhaoxuya520/reverse-skill",
+      "category": "security",
+      "license": "MIT"
+    }
+  ]
+}

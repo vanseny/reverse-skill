@@ -1,0 +1,49 @@
+{
+  "skill_name": "wechat-miniapp-reverse",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "小程序请求、调用栈和 Cookie 已抓到，lease 释放后交给 trace 做 browser-free 采集器",
+      "expected_output": "Releases the WMPF lifecycle and writes a complete shared-contract handoff for the next stage.",
+      "files": [],
+      "expectations": [
+        "Writes js_reverse_cache/tasks/<task-id>/handoff.json with primary_skill, current_stage and success_predicate",
+        "Preserves target_url/method/fields, sample_input/output, entry_script_url, env_reads and runtime_surface=wmpf-appservice",
+        "Records MCP server/session/target/capturedAt/lifecycle per WMPF ID, keeps cookie scope and retention, and marks released IDs stale or artifact-only"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "帮我逆向一个普通网站(非小程序)的登录 sign 参数",
+      "expected_output": "Performs a pre-tool intake route correction to trace for ordinary Web entry discovery.",
+      "files": [],
+      "expectations": [
+        "Does not attach a WMPF target",
+        "Routes ordinary Web entry discovery to trace Observe/Capture",
+        "Uses akamai-protocol-reverse or captcha-reverse only when their own family gates are met"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "AppService 分析到一半，换浏览器 MCP 继续用当前 reqid",
+      "expected_output": "Rejects same-stage owner switching and cross-MCP request ID reuse.",
+      "files": [],
+      "expectations": [
+        "Keeps wechat-miniapp-reverse as the WMPF runtime evidence owner",
+        "Does not invoke a CDP browser family with a miniapp request ID",
+        "Preserves per-ID MCP/session/target/time/lifecycle/status and marks invalid IDs stale"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "小程序主包里搜签名函数，search_in_sources 返回空",
+      "expected_output": "Blames the exclude_minified default before concluding the function is absent.",
+      "files": [],
+      "expectations": [
+        "Re-runs search_in_sources with exclude_minified=false because miniapp bundles are minified",
+        "Narrows with url_filter or is_regex instead of dumping every match",
+        "Falls back to initiator stack or breakpoints rather than claiming the code has no such function"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+# reverse-skill 本地插件市场 —— 一键起服务
+#
+#   docker compose -f docker/docker-compose.yml up -d
+#   claude plugin marketplace add http://127.0.0.1:8899/marketplace.json
+#   claude plugin install reverse-skill@reverse-skill
+#
+# 换端口/对外地址只改 PUBLIC_URL 与端口映射，二者必须一致，
+# 否则 marketplace.json 里的 git 地址指向别处。
+#
+# 固定项目名，避免因所在目录名(常见为 docker)与机器上其它 compose 栈混淆，
+# 出现 "Found orphan containers" 之类的误告警。
+name: reverse-skill-market
+
+services:
+  reverse-skill-market:
+    image: reverse-skill-market:1.0.1
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        SKILL_VERSION: "1.0.1"
+    container_name: reverse-skill-market
+    ports:
+      - "8899:80"
+    environment:
+      # 客户端实际访问的地址，必须与下面 ports 的外部端口一致。
+      # 公网域名示例：https://skill.vanseny.it.com
+      # 本机调试可改回：http://127.0.0.1:8899
+      PUBLIC_URL: "https://skill.vanseny.it.com"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "sh", "-c", "command -v wget >/dev/null && wget -qO- http://127.0.0.1/healthz || exit 0"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

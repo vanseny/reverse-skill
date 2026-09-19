@@ -533,6 +533,39 @@ if (Test-Path -LiteralPath $bsc) {
     }
 }
 
+# --- Claude Code plugin marketplace manifest (optional client adapter) ---
+$claudeMarketplace = Join-Path $packageRoot '.claude-plugin/marketplace.json'
+$claudePlugin = Join-Path $packageRoot '.claude-plugin/plugin.json'
+if (Test-Path -LiteralPath $claudeMarketplace) {
+    try {
+        $cmp = Get-Content -LiteralPath $claudeMarketplace -Raw -Encoding UTF8 | ConvertFrom-Json
+        if (@($cmp.plugins).Count -ge 1 -and $cmp.plugins[0].source) { Ok 'claude marketplace declares plugin source' } else { Bad 'claude marketplace missing plugin source' }
+    } catch { Bad "claude marketplace.json invalid: $($_.Exception.Message)" }
+} else { Bad '.claude-plugin/marketplace.json missing' }
+if (Test-Path -LiteralPath $claudePlugin) {
+    try {
+        $cpf = Get-Content -LiteralPath $claudePlugin -Raw -Encoding UTF8 | ConvertFrom-Json
+        $declared = @($cpf.skills)
+        if ($declared.Count -eq 0) { Bad 'claude plugin.json declares no skills' }
+        else {
+            # A root-level skills/SKILL.md makes Claude treat skills/ as ONE skill and
+            # skip nested ones, so every skill path MUST be enumerated explicitly.
+            $onDisk = @(Get-ChildItem -LiteralPath $skillsRoot -Recurse -Filter 'SKILL.md' -File | ForEach-Object {
+                $rel = $_.Directory.FullName.Substring($skillsRoot.Length).TrimStart('\', '/').Replace('\', '/')
+                if ([string]::IsNullOrWhiteSpace($rel)) { './skills/' } else { './skills/' + $rel + '/' }
+            })
+            $missingFromManifest = @($onDisk | Where-Object { $_ -notin $declared })
+            $extraInManifest = @($declared | Where-Object { $_ -notin $onDisk })
+            if ($missingFromManifest.Count -eq 0 -and $extraInManifest.Count -eq 0) {
+                Ok "claude plugin manifest lists all $($onDisk.Count) skills"
+            } else {
+                if ($missingFromManifest.Count -gt 0) { Bad "claude plugin manifest missing skills: $($missingFromManifest -join ',')" }
+                if ($extraInManifest.Count -gt 0) { Bad "claude plugin manifest references unknown skills: $($extraInManifest -join ',')" }
+            }
+        }
+    } catch { Bad "claude plugin.json invalid: $($_.Exception.Message)" }
+} else { Bad '.claude-plugin/plugin.json missing' }
+
 Write-Host "Scratch=$ScratchDir"
 if ($fail.Count -gt 0) {
     Write-Host ("FAILED {0}" -f $fail.Count) -ForegroundColor Red

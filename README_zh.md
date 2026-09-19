@@ -239,6 +239,31 @@ GitHub Actions 会在 Windows 与 Ubuntu 上执行同一套核心检查。
 
 仓库提供可选 Codex 适配插件 [`plugins/reverse-skill/`](plugins/reverse-skill/)。它委托给仓库现有路由核心，不改变客户端中立架构，也不会自动注册外部 MCP 服务。
 
+### 可选 Claude Code 插件
+
+仓库同时是一个 Claude Code [插件市场](https://docs.claude.com/en/docs/claude-code/plugins)，清单见 [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json)。安装后会挂载完整技能目录，Claude Code 可依据任务上下文自动激活对应 skill：
+
+```bash
+# 直接从 GitHub 安装（无需手动 clone）
+claude plugin marketplace add zhaoxuya520/reverse-skill
+claude plugin install reverse-skill@reverse-skill
+
+# 或从本地 clone 安装
+claude plugin marketplace add /path/to/reverse-skill
+claude plugin install reverse-skill@reverse-skill
+```
+
+查看挂载结果：
+
+```bash
+claude plugin details reverse-skill@reverse-skill
+claude plugin list --available --json
+```
+
+该入口是可选的、叠加式的。仓库保持客户端中立：插件清单只枚举已有 skill，不注册任何 MCP 服务，也不改变路由核心或授权门禁。授权始终来自 scope 契约（`case-init`），而不是插件本身的存在。
+
+> **维护提示：** 清单逐条列出每个 skill 路径，因为仓库根的 `skills/SKILL.md` 会让 Claude Code 把 `skills/` 当成单个 skill 而跳过所有嵌套 skill。新增或重命名 skill 后需执行 `powershell -File skills/scripts/sync-claude-plugin-manifest.ps1`（CI 用 `-Check` 把关）。
+
 ### 仓库结构
 
 ```

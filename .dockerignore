@@ -1,0 +1,19 @@
+# 构建镜像时排除与本市场无关的重量级内容
+# 注意：不要排除 docker/，Dockerfile 需要 COPY 其中的 nginx.conf 与模板。
+.git
+.github
+work/
+reports/
+**/node_modules/
+**/__pycache__/
+**/*.pyc
+**/*.backup
+*.png
+reverse-skill.png
+
+# 注意：保留 examples/ —— examples/ctf-demo/ 是官方宣传的完整工作流示例
+# (route → scope → timeline → evidence → report)，对使用者有教学价值。
+
+# 本机生成的索引（每台机器不同，使用者应自行 refresh-tool-index 生成）
+skills/tool-index.md
+skills/tool-index.json

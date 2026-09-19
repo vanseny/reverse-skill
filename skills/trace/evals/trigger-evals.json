@@ -1,0 +1,62 @@
+[
+  {
+    "query": "未知站点接口有 x-sign、动态 cookie、响应解码和分页 cursor，最终要 browser-free Python collector",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我打开页面定位请求 initiator、脚本 URL 和哪个函数改了 Authorization header",
+    "should_trigger": true
+  },
+  {
+    "query": "入口函数 makeSign 已知，浏览器固定输出也有了，把依赖 window/document 的 JS 放到 Node VM 跑通",
+    "should_trigger": true
+  },
+  {
+    "query": "给我一个可以贴到 DevTools 的 hook，只观察 document.cookie 写入和 fetch 参数",
+    "should_trigger": true
+  },
+  {
+    "query": "这段混淆 JS 帮我展开字符串数组和 while-switch，保留中间产物",
+    "should_trigger": true
+  },
+  {
+    "query": "明确用 Python 加 iv8 跑已知 JS 入口，再用同一个 Session 回放请求",
+    "should_trigger": true
+  },
+  {
+    "query": "极验 GT4 load 到 verify，包含 lot_number、pow_detail、图片、w 和服务端 verify 响应，要做本地协议回放",
+    "should_trigger": true
+  },
+  {
+    "query": "腾讯 TCaptcha cap_union_prehandle 返回 tdc_path，要复现 TDC collect、POW 和 cap_union_new_verify",
+    "should_trigger": true
+  },
+  {
+    "query": "网易易盾滑块 /api/v3/get 到 /api/v3/check，同轮 token、cb、data 和图片都已有，要本地复现",
+    "should_trigger": true
+  },
+  {
+    "query": "只想学习 Python 基础语法，写一个 hello world",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我写一个后台管理页面的 React UI，不涉及逆向",
+    "should_trigger": false
+  },
+  {
+    "query": "给我做账号批量登录、撞库或绕过付费访问",
+    "should_trigger": false
+  },
+  {
+    "query": "我要发布者保留的专用验证码 profile 和完整私有 case",
+    "should_trigger": false
+  },
+  {
+    "query": "我要把浏览器自动化作为最终采集方案，不需要协议恢复",
+    "should_trigger": false
+  },
+  {
+    "query": "只有一个 HTTP 403，先判断是不是网络、权限或接口参数问题，不要做协议逆向",
+    "should_trigger": false
+  }
+]

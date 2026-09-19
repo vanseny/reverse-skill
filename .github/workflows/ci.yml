@@ -130,7 +130,23 @@ jobs:
           Get-Content skills/config/routing.json -Raw -Encoding UTF8 | ConvertFrom-Json | Out-Null
           Get-Content skills/tests/routing-benchmark.json -Raw -Encoding UTF8 | ConvertFrom-Json | Out-Null
           Get-Content plugins/reverse-skill/.codex-plugin/plugin.json -Raw -Encoding UTF8 | ConvertFrom-Json | Out-Null
+          Get-Content .claude-plugin/plugin.json -Raw -Encoding UTF8 | ConvertFrom-Json | Out-Null
+          Get-Content .claude-plugin/marketplace.json -Raw -Encoding UTF8 | ConvertFrom-Json | Out-Null
           Write-Host "All JSON valid"
+
+      - name: Claude plugin manifest skill list in sync
+        shell: pwsh
+        run: ./skills/scripts/sync-claude-plugin-manifest.ps1 -Check
+
+      - name: Claude plugin manifests validate
+        shell: pwsh
+        run: |
+          if (-not (Get-Command claude -ErrorAction SilentlyContinue)) {
+            Write-Host "claude CLI unavailable; skipping manifest validate (JSON validity already gated above)"
+            exit 0
+          }
+          claude plugin validate .
+          if ($LASTEXITCODE -ne 0) { throw "marketplace manifest failed validation" }
 
       - name: Doc fact tables vs manifest (verify-doc-facts)
         shell: pwsh
@@ -367,3 +383,15 @@ jobs:
             exit 1
           }
           Write-Host "Version OK: $v"
+
+      - name: Plugin manifests match VERSION
+        shell: pwsh
+        run: |
+          $v = (Get-Content VERSION -Raw).Trim()
+          $plugin = Get-Content .claude-plugin/plugin.json -Raw -Encoding UTF8 | ConvertFrom-Json
+          $marketplace = Get-Content .claude-plugin/marketplace.json -Raw -Encoding UTF8 | ConvertFrom-Json
+          $codex = Get-Content plugins/reverse-skill/.codex-plugin/plugin.json -Raw -Encoding UTF8 | ConvertFrom-Json
+          if ($plugin.version -ne $v) { Write-Error "plugin.json version ($($plugin.version)) != VERSION ($v)"; exit 1 }
+          if ($marketplace.metadata.version -ne $v) { Write-Error "marketplace.json metadata.version ($($marketplace.metadata.version)) != VERSION ($v)"; exit 1 }
+          if ($marketplace.plugins[0].version -ne $v) { Write-Error "marketplace.json plugins[0].version ($($marketplace.plugins[0].version)) != VERSION ($v)"; exit 1 }
+          Write-Host "Plugin manifest versions OK: $v"

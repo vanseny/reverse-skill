@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "reverse-skill",
+  "owner": {
+    "name": "ZhaoXu",
+    "url": "https://github.com/zhaoxuya520"
+  },
+  "metadata": {
+    "description": "Client-neutral security and reverse-engineering skill router. 48 specialist skills covering APK/mobile, binary (IDA/Ghidra/Binary Ninja/radare2), JS/frontend, protocol recovery, malware, pentest, cloud/K8s, forensics, game security, WeChat mini-program reverse, and more. Scope-gated: authorization must be granted before any target action.",
+    "version": "1.0.1"
+  },
+  "plugins": [
+    {
+      "name": "reverse-skill",
+      "source": ".",
+      "description": "Full reverse-skill router with the complete specialist skill catalog mounted. Scope-gated routing: MASTER-ROUTING selects a PRIMARY skill, case-init grants authorization, then Evidence -> Finding -> Path.",
+      "version": "1.0.1",
+      "homepage": "https://github.com/zhaoxuya520/reverse-skill",
+      "repository": "https://github.com/zhaoxuya520/reverse-skill",
+      "category": "security",
+      "tags": [
+        "security",
+        "reverse-engineering",
+        "pentest",
+        "ctf",
+        "malware-analysis",
+        "apk",
+        "android",
+        "binary-analysis",
+        "js-reverse",
+        "protocol-reverse"
+      ],
+      "license": "MIT"
+    }
+  ]
+}

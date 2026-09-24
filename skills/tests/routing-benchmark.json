@@ -895,6 +895,46 @@
       "hint": "Twitter marketing sentiment for our product",
       "expect": "R0",
       "quick": false
+    },
+    {
+      "hint": "微信小程序 调试 抓包 62000",
+      "expect": "R42",
+      "quick": true
+    },
+    {
+      "hint": "wechat mini program reverse wmpf",
+      "expect": "R42",
+      "quick": false
+    },
+    {
+      "hint": "browser free collector spider king 纯协议 采集",
+      "expect": "R43",
+      "quick": true
+    },
+    {
+      "hint": "hostile web compact replay curl impersonate",
+      "expect": "R43",
+      "quick": false
+    },
+    {
+      "hint": "il2cppdumper global-metadata cheat engine battleye",
+      "expect": "R46",
+      "quick": true
+    },
+    {
+      "hint": "game hack pcileech dma attack kmbox",
+      "expect": "R46",
+      "quick": false
+    },
+    {
+      "hint": "camoufox jsdom 补环境 签名还原",
+      "expect": "R47",
+      "quick": true
+    },
+    {
+      "hint": "js signature restoration camoufox env-clone",
+      "expect": "R47",
+      "quick": false
     }
   ]
 }

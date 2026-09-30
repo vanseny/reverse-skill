@@ -6,15 +6,16 @@
 
 ## 统计
 
-- 真实项目数：21
+- 真实项目数：25
 - 种子参考数：17
-- 总条目数：38
-- 最近更新：2026-09-03
+- 总条目数：42
+- 最近更新：2026-09-30
 
 ## 按场景分类
 
 ### APK / Android 逆向
 
+- [2026-09-30 工业级 APK 逆向与字节补丁体系集成（newliver666/apk-reverse 实战演进）](./2026-09-30_apk-reverse-advanced-framework-integration.md)
 - [2026-08-20 Flutter AOT 服务端驱动广告去除（Blutter + 等长字符串替换）](./2026-08-20_apk-flutter-banner-ad-removal.md)
 - [2026-05-15-cellular-pro-mumu-ksad-fragment-fix](./2026-05-15-cellular-pro-mumu-ksad-fragment-fix.md)
 - [[种子] seed-008_apk-okhttp-ssl-pin-bypass](./seed-008_apk-okhttp-ssl-pin-bypass.md)
@@ -62,6 +63,9 @@
 
 ### 工具链与环境
 
+- [2026-09-30 滑块「失败」的四种假象：判据假阴性 / 出口隧道断 / 响应丢被误判成拒绝](./2026-09-30_slider-false-negative-vs-tunnel-failure.md) — ⭐ `success` 回调**不是**确定性信号（当天被 z2ch2vge 证伪）；`Failed to fetch` = 响应没回来 ≠ 请求没到；关键判据只有服务端 `{"success":true}`
+- [2026-09-30 Clash DIRECT 规则把住宅网关出口打回本机（403 forbidden ip 的真根因）](./2026-09-30_clash-direct-rule-hijacks-residential-gateway-egress.md)
+- [2026-09-30 IMAP 轮询跨轮 seen 集合 + 邮箱硬上限 = 永久黑洞](./2026-09-30_imap-poll-cross-round-seen-blackhole.md)
 - [2026-09-03 多 Issue/PR 安全边界集成](./2026-09-03_issue-pr-security-boundary-integration.md)
 - [2026-08-17 tool-index r2 fallback 与 powershell/pwsh 子进程入口统一](./2026-08-17_tool-index-r2-fallback-powershell-pwsh-host-fix.md)
 - [2026-08-14 Windows PowerShell 原生命令退出码 PR 审查](./2026-08-14_windows-powershell-native-exit-code-pr-review.md)
@@ -107,3 +111,4 @@
 2. 命中真实项目时，优先复用已验证的流程和踩坑记录。
 3. 命中种子案例时，只作为方法参考，不视为真实成功记录。
 4. 新增经验后，请按 PR 流程更新本索引，避免直接改动共享主线。
+

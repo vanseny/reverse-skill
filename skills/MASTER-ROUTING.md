@@ -119,6 +119,8 @@ python3 skills/case-review/scripts/review_case.py work/<case> --verify-hashes --
 | **R14** | LLM / Prompt 注入 / Agent 安全 | `llm-security/` |
 | **R15** | bindiff / 符号迁移 / PDB | `binary-diff/` |
 | **R19** | 浏览器/桌面自动化 | `browser-automation/` |
+| **R48** | 滑块/拼图验证码（缺口检测 + 拖拽轨迹） | `slider-captcha/` |
+| **R49** | 验证码求解器 / 无痕验证 / captcha token | `captcha-solve/` |
 | **R40** | Case / Evidence 图审查 | `case-review/` |
 | **R20** | 报告 / writeup | `docs-generator/` |
 | **R39** | 图表 / Mermaid / Graphviz / PlantUML / 架构图 | `diagram-generator/` |

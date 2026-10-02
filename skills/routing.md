@@ -45,6 +45,8 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | SAML / OIDC / SSO | `identity-federation/` | JWT-only API → `api-security/` |
 | RF / SDR (non-Wi-Fi) | `radio-sdr/` | Wi-Fi → `wifi-wireless/` |
 | Browser extension (crx/xpi) | `browser-extension-reverse/` | page JS only → `js-reverse/` |
+| Captcha — slider/puzzle (has a draggable handle) | `slider-captcha/` — gap detection + trusted CDP drag | browser/CDP basics → `browser-automation/`; scene id / verify endpoint → `js-reverse/` |
+| Captcha — traceless / token-only (no handle) | `captcha-solve/` — in-memory happy-dom solve | slider kind → `slider-captcha/`; anti-detect env → `js-reverse-hello/` |
 | Wi-Fi / wireless | `wifi-wireless/` | close-range chain → `attack-chain/` |
 | Public-source threat intelligence / OSINT | `threat-intelligence/` | X/Twitter posts remain leads until independently corroborated |
 | Blue team / threat hunt | `threat-hunting/` | sample IOC → `malware-analysis/` |
@@ -104,6 +106,8 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | "review case / evidence chain / traceability" | `case-review/`: read-only Evidence Graph Review |
 | "write writeup" | `docs-generator/` — CTF writeup template |
 | "open webpage / browser automation / fill form" | `browser-automation/SKILL.md` — Playwright |
+| "过滑块 / 滑块验证码 / 拼图验证码 / slider captcha / gap detection" | `slider-captcha/SKILL.md` — 缺口检测 + CDP 可信拖拽 |
+| "验证码求解器 / 无痕验证 / traceless / captcha token / securityToken" | `captcha-solve/SKILL.md` — 内存 happy-dom 求解 |
 | "crawl page / screenshot / auto login" | `browser-automation/SKILL.md` |
 | "desktop automation / Windows automation" | `browser-automation/SKILL.md` — OpenReverse |
 | "game reverse / anti-cheat / hack analysis" | `reverse-engineering/SKILL.md` — game reverse (IL2CPP/Unity/Cheat Engine) |

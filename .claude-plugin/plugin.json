@@ -1,7 +1,7 @@
 {
     "name":  "reverse-skill",
-    "version":  "1.0.2",
-    "description":  "Client-neutral security and reverse-engineering skill router. 50 specialist skills covering APK/mobile, binary (IDA/Ghidra/Binary Ninja/radare2), JS/frontend, protocol recovery, malware, pentest, cloud/K8s, forensics, game security, WeChat mini-program reverse, and more. Scope-gated: authorization must be granted before any target action.",
+    "version":  "1.0.3",
+    "description":  "Client-neutral security and reverse-engineering skill router. 52 specialist skills covering APK/mobile, binary (IDA/Ghidra/Binary Ninja/radare2), JS/frontend, protocol recovery, malware, pentest, cloud/K8s, forensics, game security, WeChat mini-program reverse, CAPTCHA solving, and more. Scope-gated: authorization must be granted before any target action.",
     "author":  {
                    "name":  "vanseny",
                    "url":  "https://github.com/vanseny"
@@ -28,6 +28,7 @@
                    "./skills/binary-ninja-reverse/",
                    "./skills/browser-automation/",
                    "./skills/browser-extension-reverse/",
+                   "./skills/captcha-solve/",
                    "./skills/case-review/",
                    "./skills/cloud-k8s/",
                    "./skills/code-audit/",
@@ -62,6 +63,7 @@
                    "./skills/radio-sdr/",
                    "./skills/reverse-engineering/",
                    "./skills/reverse-engineering/dsl-vm-reverse/",
+                   "./skills/slider-captcha/",
                    "./skills/supply-chain-security/",
                    "./skills/thick-client/",
                    "./skills/threat-hunting/",

@@ -1,8 +1,13 @@
 # reverse-skill 本地插件市场 —— 一键起服务
 #
 #   docker compose -f docker/docker-compose.yml up -d
-#   claude plugin marketplace add http://127.0.0.1:8899/marketplace.json
+#   claude plugin marketplace add http://127.0.0.1:18899/marketplace.json
 #   claude plugin install reverse-skill@reverse-skill
+#
+# 宿主机端口不能用 8899：Windows 的 WinNAT/Hyper-V 预留区间 8889-8988 会占掉它，
+# docker 不报错但静默丢掉 host 绑定（docker ps 只显示 80/tcp，Ports 为 []），
+# 表现为 cloudflared 拿 connection refused、公网 502。查预留区间：
+#   netsh int ipv4 show excludedportrange protocol=tcp
 #
 # 换端口/对外地址只改 PUBLIC_URL 与端口映射，二者必须一致，
 # 否则 marketplace.json 里的 git 地址指向别处。
@@ -13,19 +18,19 @@ name: reverse-skill-market
 
 services:
   reverse-skill-market:
-    image: reverse-skill-market:1.0.2
+    image: reverse-skill-market:1.0.3
     build:
       context: ..
       dockerfile: docker/Dockerfile
       args:
-        SKILL_VERSION: "1.0.2"
+        SKILL_VERSION: "1.0.3"
     container_name: reverse-skill-market
     ports:
-      - "8899:80"
+      - "18899:80"
     environment:
       # 客户端实际访问的地址，必须与下面 ports 的外部端口一致。
       # 公网域名示例：https://skill.vanseny.it.com
-      # 本机调试可改回：http://127.0.0.1:8899
+      # 本机调试可改回：http://127.0.0.1:18899
       PUBLIC_URL: "https://skill.vanseny.it.com"
     restart: unless-stopped
     healthcheck:

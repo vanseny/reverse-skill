@@ -3,7 +3,7 @@
 # 主机名/端口在构建期未知，必须延迟到容器启动时决定。
 set -eu
 
-BASE="${PUBLIC_URL:-http://localhost:8899}"
+BASE="${PUBLIC_URL:-http://localhost:18899}"
 # 去掉结尾斜杠，避免出现 //reverse-skill.git
 BASE="${BASE%/}"
 
@@ -19,6 +19,6 @@ spawn-fcgi -s "$SOCK" -U www-data -G www-data -M 0660 -- /usr/sbin/fcgiwrap
 echo "[entrypoint] fcgiwrap socket ready: $SOCK"
 
 echo "[entrypoint] marketplace: ${BASE}/marketplace.json"
-echo "[entrypoint] git remote : ${BASE}/reverse-skill.git"
+echo "[entrypoint] git remotes: ${BASE}/reverse-skill.git ${BASE}/rea.git"
 
 exec nginx -g 'daemon off;'

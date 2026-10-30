@@ -24,11 +24,11 @@ cd /path/to/reverse-skill
 docker compose -f docker/docker-compose.yml up -d --build
 
 # 2. 自检
-curl -s http://127.0.0.1:8899/healthz
-curl -s http://127.0.0.1:8899/marketplace.json | head
+curl -s http://127.0.0.1:18899/healthz
+curl -s http://127.0.0.1:18899/marketplace.json | head
 
 # 3. 客户端拉取
-claude plugin marketplace add http://127.0.0.1:8899/marketplace.json
+claude plugin marketplace add http://127.0.0.1:18899/marketplace.json
 claude plugin install reverse-skill@reverse-skill
 
 # 4. 确认挂载
@@ -44,14 +44,14 @@ claude plugin details reverse-skill@reverse-skill
 
 ```yaml
 ports:
-  - "8899:80"
+  - "18899:80"
 environment:
-  PUBLIC_URL: "http://192.168.1.50:8899"   # 改成客户端可达地址
+  PUBLIC_URL: "http://192.168.1.50:18899"   # 改成客户端可达地址
 ```
 
 ```bash
 docker compose -f docker/docker-compose.yml up -d
-claude plugin marketplace add http://192.168.1.50:8899/marketplace.json
+claude plugin marketplace add http://192.168.1.50:18899/marketplace.json
 ```
 
 ## 更新内容后如何发布
@@ -102,7 +102,7 @@ Claude Code
    │  HTTPS
    ▼
 Cloudflare Tunnel (cloudflared-local)
-   │  hostname: skill.vanseny.it.com → host.docker.internal:8899
+   │  hostname: skill.vanseny.it.com → host.docker.internal:18899
    ▼
 reverse-skill-market 容器 (:80)
    ├── /marketplace.json          ← 静态，PUBLIC_URL 生成
@@ -113,9 +113,9 @@ reverse-skill-market 容器 (:80)
 
 ```yaml
 - hostname: "skill.vanseny.it.com"
-  service: "http://host.docker.internal:8899"
+  service: "http://host.docker.internal:18899"
   originRequest:
-    httpHostHeader: "localhost:8899"
+    httpHostHeader: "localhost:18899"
 ```
 
 ### 客户端拉取
@@ -134,8 +134,8 @@ claude plugin details reverse-skill@reverse-skill   # 预期 Skills (50)
 | 场景 | PUBLIC_URL |
 |---|---|
 | 公网域名（当前） | `https://skill.vanseny.it.com` |
-| 仅本机调试 | `http://127.0.0.1:8899` |
-| 局域网共享 | `http://192.168.x.x:8899` |
+| 仅本机调试 | `http://127.0.0.1:18899` |
+| 局域网共享 | `http://192.168.x.x:18899` |
 
 改完需 `docker compose up -d` 重建容器以重新生成清单。
 
